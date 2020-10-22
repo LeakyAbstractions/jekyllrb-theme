@@ -4,6 +4,7 @@ short_name: Jekyll Docs Theme
 name: Jekyll Docs Theme • Make your documentation website look like Jekyll Docs
 description: Make your documentation website look like Jekyll Docs
 #url: https://jekyllrb.com
+baseurl: /jekyllrb-theme
 repository: https://github.com/jekyll/jekyll
 timezone: America/Los_Angeles
 twitter:
