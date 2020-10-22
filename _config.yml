@@ -1,5 +1,6 @@
 ---
 version: 4.1.1
+remote_theme: LeakyAbstractions/jekyllrb-theme@latest
 short_name: Jekyll Docs Theme
 name: Jekyll Docs Theme • Make your documentation website look like Jekyll Docs
 description: Make your documentation website look like Jekyll Docs
@@ -70,6 +71,7 @@ plugins:
 - jekyll-feed
 - jekyll-mentions
 - jekyll-redirect-from
+- jekyll-remote-theme
 - jekyll-seo-tag
 - jekyll-sitemap
 - jemoji
