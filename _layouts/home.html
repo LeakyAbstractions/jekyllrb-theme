@@ -1,0 +1,83 @@
+---
+layout: default
+---
+
+<section class="intro">
+  <div class="grid">
+    <div class="unit whole center-on-mobiles">
+      {{ content }}
+    </div>
+  </div>
+</section>
+{% if page.features %}
+<section class="features">
+  <div class="grid">
+  {%- for feature in page.features %}
+    <div class="unit one-third">
+      {{ feature.title | prepend: '## ' | markdownify }}
+	  {{ feature.text | markdownify }}
+    {%- if feature.link -%}
+      {%- if feature.link.external -%}
+      <a href="{{ feature.link.url }}">{{ feature.link.text | markdownify | remove: "<p>" | remove: "</p>" }}</a>
+      {%- else -%}
+      <a href="{{ feature.link.url | relative_url }}">{{ feature.link.text | markdownify | remove: "<p>" | remove: "</p>" }}</a>
+      {%- endif -%}
+    {%- endif -%}
+    </div>
+  {%- endfor -%}
+    <div class="clear"></div>
+  </div>
+</section>
+{% endif %}
+{% if page.quickstart %}
+<section class="quickstart">
+  <div class="grid">
+    <div class="unit golden-small center-on-mobiles">
+      {{ page.quickstart.text | prepend: "### " | markdownify }}
+    </div>
+    <div class="unit golden-large code">
+      {{ page.quickstart.shell.title | markdownify | replace: "<p>", "<p class='title'>" }}
+      <div class="shell">
+  {% for line in page.quickstart.shell.lines %}
+        <p class="line">
+          {% if line.path    %}{{ line.path    | markdownify | replace: "<p>", "<span class='path'>"    | replace: "</p>", "</span>" }}{% endif %}
+          {% if line.prompt  %}{{ line.prompt  | markdownify | replace: "<p>", "<span class='prompt'>"  | replace: "</p>", "</span>" }}{% endif %}
+          {% if line.command %}{{ line.command | markdownify | replace: "<p>", "<span class='command'>" | replace: "</p>", "</span>" }}{% endif %}
+          {% if line.output  %}{{ line.output  | markdownify | replace: "<p>", "<span class='output'>"  | replace: "</p>", "</span>" }}{% endif %}
+        </p>
+  {% endfor %}
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</section>
+{% endif %}
+{% if page.call_to_action %}
+<section class="free-hosting">
+  <div class="grid">
+    <div class="unit whole">
+      <div class="grid pane">
+        <div class="unit whole center-on-mobiles">
+  {% if page.call_to_action.img %}
+          <img src="{{ page.call_to_action.img.src | default: '/assets/img/octojekyll.png' | relative_url }}" width="{{ page.call_to_action.img.width }}" height="{{ page.call_to_action.img.height }}" alt="{{ page.call_to_action.img.alt }}">
+  {% endif %}
+  {% if page.call_to_action.content %}
+          <div class="pane-content">
+            {{ page.call_to_action.content.title | markdownify | replace: "<p>", "<h2 class='center-on-mobiles'>" | replace: "</p>", "</h2>" }}
+            {{ page.call_to_action.content.text | markdownify }}
+    {% if page.call_to_action.content.link %}
+      {%- if page.call_to_action.content.link.external -%}
+      <a href="{{ page.call_to_action.content.link.url }}">{{ page.call_to_action.content.link.text | markdownify | remove: "<p>" | remove: "</p>" }}</a>
+      {%- else -%}
+      <a href="{{ page.call_to_action.content.link.url | relative_url }}">{{ page.call_to_action.content.link.text | markdownify | remove: "<p>" | remove: "</p>" }}</a>
+      {%- endif -%}
+          </div>
+    {% endif %}
+  {% endif %}
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
