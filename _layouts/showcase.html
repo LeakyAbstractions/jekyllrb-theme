@@ -1,12 +1,10 @@
 ---
 layout: page
-title: Showcase
-permalink: /showcase/
-redirect_from:
-  - /docs/sites/
 ---
 
-<p>Jekyll is used for all kinds of usecases. Here's some of our favorites:</p>
+{{ content }}
+
+{% if site.data.showcase %}
 
 <ul class="showcase" id="showcase">
   {% for s in site.data.showcase reversed -%}
@@ -14,7 +12,9 @@ redirect_from:
     <a href="{{ s.url | relative_url }}" target="_blank">
       <figure>
         <div class="imageWrapper">
-          <img loading="lazy" class="b-lazy" src="{{ '/assets/img/spacer.gif' | relative_url }}" alt="{{ s.name }}" width="404">
+          <img loading="lazy" class="b-lazy" src="{{ '/assets/img/spacer.gif' | relative_url }}" alt="{{ s.name }}" width="404"
+            data-categories="{{ s.categories | join: ',' }}"
+            data-src="{{ s.image | relative_url }}">
         </div>
         <figcaption>{{ s.name }}</figcaption>
       </figure>
@@ -27,12 +27,15 @@ redirect_from:
 <script src="//cdn.jsdelivr.net/blazy/latest/blazy.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.10.0/js/md5.min.js"></script>
 <script>
-  var apiUrl = 'https://d2ov3dk2yjyb0w.cloudfront.net/',
-    a = 'c7aa76e1-684d-4c45-b396-78b893839b5f',
-    b = 'c7bfb661-71a8-40bb-baac-7ddad709639c',
+{% if site.screenshot_api %}
+
+  var apiUrl = 'https://cdn.capture.techulus.in/',
+    a = '{{ site.screenshot_api.api_key }}',
+    b = '{{ site.screenshot_api.api_secret }}',
     sites = document.getElementById('showcase').getElementsByTagName('a');
 
   for (var i = 0; i < sites.length; i++) {
+    if(sites[i].getElementsByTagName('img')[0].getAttribute('data-src')) continue;
     var href = sites[i].getAttribute('href'),
       inputUrl = encodeURIComponent(href),
       q = 'url=' + inputUrl + '&delay=2&resizeWidth=800&resizeHeight=600',
@@ -43,4 +46,23 @@ redirect_from:
   }
 
   var bLazy = new Blazy();
+
+{% else %}
+
+  var sites = document.getElementById('showcase').getElementsByTagName('a');
+
+  for (var i = 0; i < sites.length; i++) {
+    var image = sites[i].getElementsByTagName('img')[0];
+	var categories = image.getAttribute('data-categories');
+	var src = image.getAttribute('data-src');
+	if (!src) {
+      image.setAttribute('data-src', 'https://loremflickr.com/800/500/' + categories);
+    }
+  }
+
+  var bLazy = new Blazy();
+
+{% endif %}
 </script>
+
+{% endif %}
