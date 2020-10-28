@@ -1,8 +1,23 @@
 ---
 layout: page
-title: The Jekyll Team
+title: The Team
 permalink: /team/
 ---
+
+{% if site.team %}
+
+{% for team in site.team %}
+## {{ team.name }}
+
+{{ team.text }}
+
+{% for member in team.members %}
+- [{% avatar user=member.user size=24 %} {{ member.name }}](https://github.com/{{ member.user }} "@{{ member.user }}")
+{% endfor %}
+
+{% endfor %}
+
+{% else %}
 
 ## Core Team
 
@@ -21,3 +36,5 @@ _Emeritus Core Team Members were once members of Jekyll's Core Team._
 * Nick (@qrush)
 * Parker (@parkr)
 * Tom (@mojombo)
+
+{% endif %}
