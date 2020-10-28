@@ -6,6 +6,28 @@ description: Make your documentation website look like Jekyll Docs
 #url: https://jekyllrb.com
 baseurl: /jekyllrb-theme
 repository: https://github.com/LeakyAbstractions/jekyllrb-theme
+team:
+- name: Jekyll Core Team
+  text: _The Jekyll Core Team's responsibility is to ensure the development
+    and community around the Jekyll ecosystem thrive._
+  members:
+  - name: Ashwin
+    user: ashmaroli
+  - name: Frank
+    user: DirtyF
+  - name: Matt
+    user: mattr-
+- name: Emeritus Core Team Members
+  text: _Emeritus Core Team Members were once members of Jekyll's Core Team._
+  members:
+  - name: Alfred
+    user: alfredxing
+  - name: Nick
+    user: qrush
+  - name: Parker
+    user: parkr
+  - name: Tom
+    user: mojombo
 timezone: America/Los_Angeles
 twitter:
   username: jekyllrb
