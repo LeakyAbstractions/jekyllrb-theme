@@ -1,0 +1,19 @@
+---
+layout: page
+---
+
+{{ content }}
+
+{% for resource in site.data.resources %}
+
+<h2 id="{{ resource.title | slugify }}">{{ resource.title }}</h2>
+
+{{ resource.text | markdownify }}
+
+<ul>
+  {% for item in resource.items %}
+    {{ item | markdownify | replace: '<p>', '<li>' | replace: '</p>', '</li>' }}
+  {% endfor %}
+</ul>
+
+{% endfor %}
