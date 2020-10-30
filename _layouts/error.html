@@ -6,8 +6,8 @@
       <div class="unit whole align-center">
         <h1>
           <a href="{{ '/' | relative_url }}">
-            <span class="sr-only">Jekyll</span>
-            <img src="{{ site.logo | default: '/assets/img/logo-2x.png' | relative_url }}" width="249" height="115" alt="Jekyll Logo">
+            <span class="sr-only">{{ site.short_name | default: site.name }}</span>
+            <img src="{{ site.logo | default: '/assets/img/logo-2x.png' | relative_url }}" width="249" height="115" alt="{{ site.short_name | default: site.name }} Logo">
           </a>
         </h1>
       </div>
