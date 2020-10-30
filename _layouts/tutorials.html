@@ -9,7 +9,7 @@ layout: default
       <article>
         <header class="tutorial-header">
           <div class="improve right hide-on-mobiles">
-            <a href="https://github.com/jekyll/jekyll/edit/master/docs/{{ page.path }}"><i
+            <a href="{% include edit_link.html path=page.path %}"><i
                class="fa fa-pencil"></i> &nbsp;Improve this page</a>
           </div>
           <h1 class="tutorial-title">{{ page.title }}</h1>
