@@ -1,5 +1,7 @@
 /* Base */
 
+@import 'variables';
+
  html {
    box-sizing: border-box;
  }
@@ -12,8 +14,8 @@
 
 body {
   font: 300 21px Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #ddd;
-  background-color: #333;
+  color: $body_FGCOLOR;
+  background-color: $body_BGCOLOR;
   @include box-shadow(inset 0 3px 30px rgba(0,0,0,.3));
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
   -webkit-font-feature-settings: "kern" 1;
@@ -50,7 +52,7 @@ footer {
 
 header {
   padding: 15px;
-  background: darken(#333, 3%);
+  background: $header_BGCOLOR;
 
   h1,
   nav { display: inline-block; }
@@ -102,7 +104,7 @@ nav, .meta {
       @include transition(all .25s);
 
       &:hover {
-        background-color: #252525;
+        background-color: $main_nav-link-HOVER_BGCOLOR;
         @include box-shadow(inset 0 1px 3px rgba(0,0,0,.5), 0 1px 0 rgba(255,255,255,.1));
         text-shadow: 0 1px 3px rgba(0,0,0,.5);
       }
@@ -111,8 +113,8 @@ nav, .meta {
     &.current {
 
       a {
-        background-color: #fc0;
-        color: #222;
+        background-color: $main_nav-current_element-link_BGCOLOR;
+        color: $main_nav-current_element-link_FGCOLOR;
         @include box-shadow(inset 0 1px 0 rgba(255,255,255,.5), 0 1px 5px rgba(0,0,0,.5));
         text-shadow: 0 1px 0 rgba(255,255,255,.3);
       }
@@ -131,8 +133,8 @@ nav, .meta {
   a {
     float: left;
     width: 100%;
-    background-color: #333;
-    color: #fc0;
+    background-color: $mobile_nav-link_BGCOLOR;
+    color: $mobile_nav-link_FGCOLOR;
     text-align: center;
     text-transform: uppercase;
     font-size: 0.625em;
@@ -150,8 +152,8 @@ nav, .meta {
   .current {
 
     a {
-      background-color: #fc0;
-      color: #222;
+      background-color: $mobile_nav-current-link_BGCOLOR;
+      color: $mobile_nav-current-link_FGCOLOR;
       @include box-shadow(inset 0 1px 0 rgba(255,255,255,.5), 0 1px 5px rgba(0,0,0,.5));
       text-shadow: 0 1px 0 rgba(255,255,255,.3);
     }
@@ -202,7 +204,7 @@ h6:hover .header-link {
 /* Footer */
 
 footer {
-  background-color: #212121;
+  background-color: $footer_BGCOLOR;
   font-size: 16px;
   padding-bottom: 5px;
   color: #c0c0c0;
@@ -259,8 +261,8 @@ footer {
 /* Quickstart */
 
 .quickstart {
-  background-color: #3F1F1F;
-  color: #fff;
+  background-color: $quickstart_BGCOLOR;
+  color: $quickstart_FGCOLOR;
   margin: 60px 0;
   @include box-shadow(inset 0 3px 10px rgba(0,0,0,.4));
 
@@ -369,7 +371,7 @@ footer {
 .free-hosting {
 
   .pane {
-    background-color: #3e3e3e;
+    background-color: $free_hosting-pane_BGCOLOR;
     @include border-radius(10px);
     text-shadow: none;
     position: relative;
@@ -407,17 +409,6 @@ footer {
 
     p,
     a { font-size: 18px; }
-
-    .pane:after {
-      content: " ";
-      float: right;
-      background: url(../img/footer-arrow.png) top left no-repeat;
-      width: 73px;
-      height: 186px;
-      position: absolute;
-      right: 0;
-      bottom: -30px;
-    }
   }
 }
 
@@ -425,7 +416,7 @@ footer {
 
 
 article {
-  background-color: #444;
+  background-color: $article_BGCOLOR;
   @include border-radius(10px);
   padding: 20px;
   margin: 0 10px;
@@ -460,7 +451,7 @@ aside {
     padding: 0 0 10px 30px;
     margin-left: -30px;
     display: inline-block;
-    border-bottom: 1px solid #c00;
+    border-bottom: 1px solid $aside-h4_BORDERCOLOR;
   }
 
   ul {
@@ -479,7 +470,7 @@ aside {
 
     &.current a:before {
       content: "";
-      border-color: transparent transparent transparent #444;
+      border-color: transparent transparent transparent $aside-current_element-link_BEFORE_BORDERCOLOR;
       border-style: solid;
       border-width: 10px;
       width: 0;
@@ -489,7 +480,7 @@ aside {
       left: -30px;
     }
     &.current a {
-        color: #f90;
+        color: $aside-current_element-link_FGCOLOR;
     }
   }
 }
@@ -514,7 +505,7 @@ aside {
 
   a,
   span {
-    color: #fff;
+    color: $section_nav-span_FGCOLOR;
     font-size: 16px;
     text-transform: uppercase;
     font-weight: 700;
@@ -522,12 +513,12 @@ aside {
     @include border-radius(5px);
     /*border: 1px solid #333;*/
     @include box-shadow(0 1px 3px rgba(0,0,0,.3), inset 0 1px 1px rgba(255,255,255,.5));
-    background-color: #767676;
+    background-color: $section_nav-span_BGCOLOR;
   }
 
   a:hover {
-    color: #fff;
-    background-color: #888;
+    color: $section_nav-link-HOVER_FGCOLOR;
+    background-color: $section_nav-link-HOVER_BGCOLOR;
   }
 
   .next,
@@ -536,7 +527,7 @@ aside {
   .next:after,
   .prev:before {
     font-size: 36px;
-    color: #222;
+    color: $section_nav-next-after_FGCOLOR;
     font-weight: 900;
     text-shadow: 0 1px 0 rgba(255,255,255,.4);
     position: absolute;
@@ -569,7 +560,7 @@ aside {
   padding-top: 25px;
   font-size: 16px;
   a {
-    color: #999;
+    color: $improve-link_FGCOLOR;
   }
 }
 
@@ -577,8 +568,8 @@ aside {
   padding: 5px;
   width: 100%;
   font-size: 0.85em;
-  color: #000;
-  background: #ddd;
+  color: $docs_nav_mobile-select_FGCOLOR;
+  background: $docs_nav_mobile-select_BGCOLOR;
   border-color: transparent;
   @include border-radius(5px);
 
@@ -611,21 +602,21 @@ article h2:first-child { margin-top: 0; }
   @include border-radius(0 5px 5px 0);
   position: relative;
   @include box-shadow(0 1px 5px rgba(0, 0, 0, .3), inset 0 1px 0 rgba(255,255,255,.2), inset 0 -1px 0 rgba(0,0,0,.3));
-  background-color: #9e2812;
+  background-color: $post_category_BGCOLOR;
   background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzllMjgxMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM2ZjBkMGQiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#9e2812), to(#6f0d0d));
-  background-image: -webkit-linear-gradient(top, #9e2812 0%, #6f0d0d 100%);
-  background-image: -moz-linear-gradient(top, #9e2812 0%, #6f0d0d 100%);
-  background-image: -o-linear-gradient(top, #9e2812 0%, #6f0d0d 100%);
-  background-image: linear-gradient(to bottom, #9e2812 0%,#6f0d0d 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9e2812', endColorstr='#6f0d0d',GradientType=0 );
+  background-image: -webkit-gradient(linear, left top, left bottom, from($post_category_BGCOLOR), to($post_category_BGCOLOR_GRADIENT_END));
+  background-image: -webkit-linear-gradient(top, $post_category_BGCOLOR 0%, $post_category_BGCOLOR_GRADIENT_END 100%);
+  background-image: -moz-linear-gradient(top, $post_category_BGCOLOR 0%, $post_category_BGCOLOR_GRADIENT_END 100%);
+  background-image: -o-linear-gradient(top, $post_category_BGCOLOR 0%, $post_category_BGCOLOR_GRADIENT_END 100%);
+  background-image: linear-gradient(to bottom, $post_category_BGCOLOR 0%, $post_category_BGCOLOR_GRADIENT_END 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$post_category_BGCOLOR', endColorstr='$post_category_BGCOLOR_GRADIENT_END',GradientType=0 );
 
   &:before {
     content: "";
     position: absolute;
     top: -10px;
     left: 0;
-    border-color: transparent #6f0d0d #6f0d0d transparent;
+    border-color: transparent $post_category_BGCOLOR_GRADIENT_END $post_category_BGCOLOR_GRADIENT_END transparent;
     border-style: solid;
     border-width: 5px;
     width: 0;
@@ -658,7 +649,7 @@ article h2:first-child { margin-top: 0; }
 
 .post-meta {
   padding: 5px 0;
-  color: #c0c0c0;
+  color: $post_meta_FGCOLOR;
   font-weight: 600;
   text-shadow: 0 -1px 0 #000;
 }
@@ -670,7 +661,7 @@ article h2:first-child { margin-top: 0; }
 .news article + article {
   margin-top: -6px;
   padding: 15px 40px;
-  border-top: 1px solid #555;
+  border-top: 1px solid $news-article_BORDERCOLOR;
   border-radius: 0;
   @include box-shadow(0 -1px 0 #2f2f2f);
 
@@ -705,7 +696,7 @@ article h2:first-child { margin-top: 0; }
   margin-bottom: 30px;
   padding: 0 0 15px;
   background: transparent;
-  border-bottom: 1px solid #545454;
+  border-bottom: 1px solid $tutorial_header_BORDERCOLOR;
   .improve { padding-top: 14px }
   .tutorial-title {
     display: block;
@@ -758,8 +749,8 @@ li > code,
 li> pre,
 h5 > code,
 .note > code {
-  background-color: #272727;
-  color: #fff;
+  background-color: $note-code_BGCOLOR;
+  color: $note-code_FGCOLOR;
   max-width: 100%;
   overflow-x: auto;
   vertical-align: middle;
@@ -781,7 +772,7 @@ a > code { color: inherit }
 }
 
 .note code {
-  background-color: #333;
+  background-color: $note-code_BGCOLOR;
   background-color: rgba(0,0,0,0.2);
   margin-left: 2.5px;
   margin-right: 2.5px;
@@ -818,11 +809,11 @@ div.highlighter-rouge + div.highlighter-rouge {
 h1, h2, h3, h4, h5, h6 { margin: 0; }
 
 a {
-  color: #fc0;
+  color: $link_FGCOLOR;
   text-decoration: none;
   @include transition(all .25s);
 
-  &:hover { color: #f90; }
+  &:hover { color: $link-HOVER_FGCOLOR; }
 }
 
 strong { font-weight: 700; }
@@ -841,7 +832,7 @@ article {
 
   h2, h3, h4, h5, h6 { margin: 1em 0; }
 
-  h4 { color: #fff; }
+  h4 { color: $article-h4_FGCOLOR; }
 
   ul li {
 
@@ -864,7 +855,7 @@ h5, h6 {
 }
 
 blockquote {
-  border-left: 2px solid #777;
+  border-left: 2px solid $blockquote_BORDERCOLOR;
   padding-left: 20px;
   font-style: italic;
   font-size: 18px;
@@ -876,7 +867,7 @@ blockquote {
 
 table {
   width: 100%;
-  background-color: #555;
+  background-color: $table_BGCOLOR;
   margin: .5em 0;
   @include border-radius(5px);
   @include box-shadow(0 1px 3px rgba(0,0,0,.3));
@@ -885,15 +876,14 @@ table {
 thead {
   @include border-top-left-radius(5px);
   @include border-top-right-radius(5px);
-  color: #fff;
-  background-color: #3a3a3a;
-  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzNhM2EzYSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxZTFlMWUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#3a3a3a), to(#1e1e1e));
-  background-image: -webkit-linear-gradient(top, #3a3a3a 0%, #1e1e1e 100%);
-  background-image: -moz-linear-gradient(top, #3a3a3a 0%, #1e1e1e 100%);
-  background-image: -o-linear-gradient(top, #3a3a3a 0%, #1e1e1e 100%);
-  background-image: linear-gradient(to bottom, #3a3a3a 0%,#1e1e1e 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3a3a3a', endColorstr='#1e1e1e',GradientType=0 );
+  color: $thead_FGCOLOR;
+  background-color: $thead_BGCOLOR;
+  background-image: -webkit-gradient(linear, left top, left bottom, from($thead_BGCOLOR), to($thead_BGCOLOR_GRADIENT_END));
+  background-image: -webkit-linear-gradient(top, $thead_BGCOLOR 0%, $thead_BGCOLOR_GRADIENT_END 100%);
+  background-image: -moz-linear-gradient(top, $thead_BGCOLOR 0%, $thead_BGCOLOR_GRADIENT_END 100%);
+  background-image: -o-linear-gradient(top, $thead_BGCOLOR 0%, $thead_BGCOLOR_GRADIENT_END 100%);
+  background-image: linear-gradient(to bottom, $thead_BGCOLOR 0%, $thead_BGCOLOR_GRADIENT_END 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$thead_BGCOLOR', endColorstr='$thead_BGCOLOR_GRADIENT_END',GradientType=0 );
 
   th {
     position: relative;
@@ -918,7 +908,7 @@ th {
   font-size: 16px;
   padding: .5em .75em;
   text-shadow: 0 -1px 0 rgba(0,0,0,.9);
-  color: #888;
+  color: $th_FGCOLOR;
 }
 
 tbody td {
@@ -1290,9 +1280,9 @@ p.note {
 }
 
 .step-nav {
-  background: #2b2b2b;
+  background: $step_nav_BGCOLOR;
   border-radius: 5px;
-  color: #fc0;
+  color: $step_nav_FGCOLOR;
   padding: 8px 45px;
 
   li {
@@ -1300,7 +1290,7 @@ p.note {
     padding: 0;
 
     &.current, &.current a {
-      color: #f90;
+      color: $step_nav-current_element-link_FGCOLOR;
       font-weight: bold;
     }
   }
